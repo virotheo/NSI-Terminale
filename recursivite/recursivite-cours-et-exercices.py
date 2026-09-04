@@ -112,3 +112,56 @@ print(dec_binv2(17))   # 10001
 print(dec_binv2(8))    # 1000
 print(dec_binv2(195))  # 11000011
 
+# Exercice 3
+#manière itérative
+def est_palindrome(mot):
+    liste = []
+    for lettre in mot:
+        liste.append(lettre)
+    nv_liste = liste[::-1]
+    if liste == nv_liste:
+        return True
+    else:
+        return False    
+
+print(est_palindrome('kayak'))
+print(est_palindrome('tapat'))
+print(est_palindrome('bonjour'))
+
+# manière récursive
+def est_palindrome_coorection(mot:str)->bool:
+    if len(mot) == 1:
+        return True
+    elif mot[0] != mot[-1]:
+        return False
+    else:
+        return est_palindrome_coorection(mot[1:len(mot)-1])        
+
+print(est_palindrome_coorection('kayak'))        
+print(est_palindrome_coorection('bonjour'))        
+print(est_palindrome_coorection('aaaaaaaaaaaaaaa'))        
+
+# Exercice 4
+def nb_chiffres(chiffre:int)->int:
+    if chiffre <10:
+        return 1
+    return nb_chiffres(chiffre//10) + 1
+
+    
+print(nb_chiffres(255555550))
+print(nb_chiffres(255550))
+print(nb_chiffres(2))
+
+# Exercice 5 
+def paysan_russe(a,b):
+    if a > 0:
+        if a % 2 == 0:
+            return paysan_russe(a//2,b*2)
+        else:
+            return paysan_russe(a-1,b) + b
+    else:
+        return 0    
+    
+
+print(paysan_russe(51,14))    
+print(paysan_russe(12,5))
