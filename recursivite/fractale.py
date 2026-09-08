@@ -27,11 +27,16 @@ def Koch(n, a):
 #print(Koch(3,200))   
 
 # Q2
+t.up()
+t.goto(-200,200)
+t.speed('fastest')
+t.width(2)
+t.down()
 def flocon(n,a):
     for i in range (4):
         Koch(n,a)
         t.right(90)
 
-#print(flocon(4,130))        
+print(flocon(4,400))        
 t.exitonclick()
 t.mainloop()
