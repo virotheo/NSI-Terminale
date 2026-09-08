@@ -154,7 +154,7 @@ print(nb_chiffres(2))
 
 # Exercice 5 
 def paysan_russe(a,b):
-    if a > 0:
+    if a > 0: #variant
         if a % 2 == 0:
             return paysan_russe(a//2,b*2)
         else:
