@@ -33,29 +33,79 @@ pileEmpiler(test, ')')
 pileEmpiler(test, ')')
 
 test2 = creePile()
-pileEmpiler(test, '(')
-pileEmpiler(test, '(')
-pileEmpiler(test, '(')
-pileEmpiler(test, 'a')
-pileEmpiler(test, 'b')
-pileEmpiler(test, ')')
-pileEmpiler(test, ')')
-pileEmpiler(test, ')')
-pileEmpiler(test, '(')
-pileEmpiler(test, '(')
-pileEmpiler(test, '(')
-pileEmpiler(test, 'a')
-pileEmpiler(test, 'b')
-pileEmpiler(test, ')')
+pileEmpiler(test2, '(')
+pileEmpiler(test2, '(')
+pileEmpiler(test2, '(')
+pileEmpiler(test2, 'a')
+pileEmpiler(test2, 'b')
+pileEmpiler(test2, ')')
+pileEmpiler(test2, ')')
+pileEmpiler(test2, ')')
+pileEmpiler(test2, '(')
+pileEmpiler(test2, 'a')
+pileEmpiler(test2, 'b')
+pileEmpiler(test2, ')')
 
 
 def bien_parenthese(mot):
-    for i in range(len(mot)):
-        if mot[i] == '(':
-            pileEmpiler(mot, ')')
-        elif mot[i] == ')':
-            pileDepiler(mot)
-    return mot                
+    P = creePile()
+    for c in mot:
+        if c == '(':
+            pileEmpiler(P, c)
+        elif c == ')':
+            if pileEstVide(P):
+                return False
+            else:    
+                pileDepiler(P)
+    return pileEstVide(P)            
 
 print(bien_parenthese(test))    
 print(bien_parenthese(test2))    
+
+# Exercice 2
+'''
+calcul d'expression numérique postfixée / notation polobaise inversée
+73-2*8+
+42*8+
+88+
+16
+
+7 8 4 + * 7 2 + -
+7 12 * 7 2 + - 
+84 7 2 + -
+84 9 -
+75
+
+
+5 2 + 3 * 4 + 2 *
+7 3 * 4 + 2 *
+21 4 + 2 * 
+25 2 *
+50
+'''
+
+def calcul_postfixe(calc):
+    M = creePile()
+    numbers = []
+    for n in range (101): 
+        numbers.append(n)
+    signes = ["+","/","*","-"]
+    for i in calc:
+        if i in numbers:
+            pileEmpiler(M, i)
+        elif i in signes:
+            un = pileDepiler(M)
+            deux = pileDepiler(M)
+            if i == '+':
+                resultat = un + deux
+            elif i == '*':
+                resultat = un * deux
+            elif i == '-':
+                resultat = deux - un
+            elif i == '/':
+                resultat = deux / un    
+            pileEmpiler(M, resultat)    
+    return pileDepiler(M)
+
+print(calcul_postfixe([2,3,'*']))
+print(calcul_postfixe([45,75,'*',45,'/',100,'+',100,'-']))
