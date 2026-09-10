@@ -11,7 +11,7 @@ def fileDefiler(F):
     if fileEstVide(F):
         return None
     else:
-        F.pop(0)
+        return F.pop(0)
 
 def filetete(F):
     return F[0]    
