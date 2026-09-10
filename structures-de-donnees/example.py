@@ -19,3 +19,43 @@ def fileInverser(F):
     return F    
 
 print(fileInverser(mafile))
+
+
+
+test = creePile()
+pileEmpiler(test, '(')
+pileEmpiler(test, '(')
+pileEmpiler(test, '(')
+pileEmpiler(test, 'a')
+pileEmpiler(test, 'b')
+pileEmpiler(test, ')')
+pileEmpiler(test, ')')
+pileEmpiler(test, ')')
+
+test2 = creePile()
+pileEmpiler(test, '(')
+pileEmpiler(test, '(')
+pileEmpiler(test, '(')
+pileEmpiler(test, 'a')
+pileEmpiler(test, 'b')
+pileEmpiler(test, ')')
+pileEmpiler(test, ')')
+pileEmpiler(test, ')')
+pileEmpiler(test, '(')
+pileEmpiler(test, '(')
+pileEmpiler(test, '(')
+pileEmpiler(test, 'a')
+pileEmpiler(test, 'b')
+pileEmpiler(test, ')')
+
+
+def bien_parenthese(mot):
+    for i in range(len(mot)):
+        if mot[i] == '(':
+            pileEmpiler(mot, ')')
+        elif mot[i] == ')':
+            pileDepiler(mot)
+    return mot                
+
+print(bien_parenthese(test))    
+print(bien_parenthese(test2))    
