@@ -109,3 +109,24 @@ def calcul_postfixe(calc):
 
 print(calcul_postfixe([2,3,'*']))
 print(calcul_postfixe([45,75,'*',45,'/',100,'+',100,'-']))
+print(calcul_postfixe([5,2,'+',3,'*',4,'+',2,'*']))
+
+def calcul_postfixe_correction(calc2:list)->float:
+    L = creePile()
+    for x in calc2:
+        if x not in ['+','-','*','/']:
+            pileEmpiler(L,x)
+        else:
+            y = pileDepiler(L)
+            z = pileDepiler(L)
+            if x == '+':
+                pileEmpiler(L,y+z)    
+            elif x == '*':
+                pileEmpiler(L,y*z)    
+            elif x == '-':
+                pileEmpiler(L,z-y)    
+            else:
+                pileEmpiler(L,z//y)          
+    return pileDepiler(L)            
+
+print(calcul_postfixe_correction([5,2,'+',3,'*',4,'+',2,'*']))
