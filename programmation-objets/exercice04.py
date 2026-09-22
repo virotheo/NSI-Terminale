@@ -1,4 +1,3 @@
-#exercice3_correction.py
 import matplotlib
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
