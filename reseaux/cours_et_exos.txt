@@ -1,10 +1,9 @@
-'''
+
 IP = 192.168.12.4/24 Masque = 255.255.255.0
 Partie réseau = 192.168.12 Partie Mmachine = 4
 255 = 11111111
 0 = 00000000
 1 = réseau 0 = machine
-
 
 Exercice 1 
 
@@ -41,9 +40,5 @@ la partie réseau se lie sur les 20 premiers octets donc les 2 premiers vont jus
  le dernier bit du reseau est différent avec le A donc les deux ordinateurs ne peuvent pas communiquer ente
   eux.
 
-
 NB = 192.168.0.1/24 est appellée la notation CIDR
 Exercice 3 (Filius)
-
-
-'''
