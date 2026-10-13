@@ -1,0 +1,73 @@
+Exercice 1 - NSI - Reseaux
+
+1) IP = 172.16.2.1/16 donc la partie réseau porte sur les
+  2 premiers octets soit 172.16 donc la partie locale est
+  2.1
+
+2) Nous pouvons en déduire que 172.16.255.255, elle sert à
+  contacter toutes les autres machines.
+
+3) 2^16 car deux octets de libres = 65 536 - 2 = 65 534
+
+4) Voir annexe1_exercice1.png
+
+5) R1 puis R3 puis R2
+
+6) R1 puis R4 puis R5 puis R2
+
+7)
+
+list_route=[]
+MAX_ROUTES=5
+
+def ajouter_route(route):
+    list_route.append(route)
+"""
+    il ne vérifie pas qu'il y ait trop de route
+
+    """
+
+class routage:
+    def __init__(self,capacite=5):
+        self.capacite=capacite
+        self.route=[]
+
+    def ajouter_route(self,route):
+        if len(route)<capacite:
+            self.route.append(route)
+        else:
+            print( "error: NOT ENOUGH CAPACITY")
+
+Exercice 2 - NSI - Reseaus
+
+1) Ce réseau sera encore foctionnel même si l'une des liaisons est occupée
+  puisque dans ce réseau il existe toujours deux choix de liaisons possibles.
+
+2) On lit : R2, R3, R4, R5
+
+3) Voir annexe_exercice2.png
+
+4) On voit que R2 est beaucoup utilisé donc si son débit est lent
+  donc le choix du protocole RIP n’est pas judicieux.
+
+5) a) Le débit est le plus faible quand le coût est le plus élevé
+  donc c'est la liaison 2
+
+  b) La liste des quatre chemins possibles pour aller de SiteA à SiteC sans
+  utiliser deux fois le même routeur est : [R1,R3,R4,R5] / [R1,R2,R5] / [R1,R3,R2,R5] / [R1,R2,R3,R4,R5]
+  Le coût de chacun de ces chemins est respectivement :
+  - Pour [R1,R3,R4,R5] : Liaison 4 + Liaison 5 + Liaison 6 = 50 000 + 5 + 10 = 50 015
+  - Pour [R1,R2,R5] : Liaison 1 + Liaison 2 = 100 000 + 1 000 000 = 1 100 000
+  - Pour [R1,R3,R2,R5] : Liaison 4 + Liaison 3 + Liaison 2 = 50 000 + 5 + 1 000 000 = 1 050 005
+  - Pour [R1,R2,R3,R4,R5] : Liaison 1 + Liaison 3 + Liaison 5 + Liaison 6 = 100 000 + 5 + 5 + 10 = 100 020
+
+  c)
+Destination|suivant|coût total
+Site A     | local |0
+Site B     | R3    |50 005
+Site C     | R3    |50 015
+Site D     | R3    |50 005
+
+
+
+
