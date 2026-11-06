@@ -1,3 +1,6 @@
+from timeit import *
+
+
 def simple_exp(x,p): # simple exponantial function
     res = 1
     for i in range(p):
@@ -17,3 +20,13 @@ def recursive_exp(x, p):
         return x * recursive_exp(x, p - 1) 
 
 print(recursive_exp(2,16)) # Test
+
+x=1.001
+n=100000
+
+temps_expRapideRec=timeit(lambda:recursive_exp(x,n),number=100)
+
+temps_expRapideIter=timeit(lambda:simple_exp(x,n),number=100)
+
+print(temps_expRapideIter)
+print(temps_expRapideRec)
