@@ -27,6 +27,11 @@ n=100000
 temps_expRapideRec=timeit(lambda:recursive_exp(x,n),number=100)
 
 temps_expRapideIter=timeit(lambda:simple_exp(x,n),number=100)
-
+print('------------------------------------------')
+print("Iterative time : \n")
 print(temps_expRapideIter)
+print('------------------------------------------')
+
+print("Recursive time : \n")
 print(temps_expRapideRec)
+print('------------------------------------------')
