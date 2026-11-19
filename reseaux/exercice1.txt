@@ -38,7 +38,7 @@ class routage:
         else:
             print( "error: NOT ENOUGH CAPACITY")
 
-Exercice 2 - NSI - Reseaus
+Exercice 2 - NSI - Reseaux
 
 1) Ce réseau sera encore foctionnel même si l'une des liaisons est occupée
   puisque dans ce réseau il existe toujours deux choix de liaisons possibles.
