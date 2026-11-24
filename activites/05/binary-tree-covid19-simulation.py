@@ -1,3 +1,4 @@
+
 """
 1) According to the decision tree in Figure 1 
 a patient who has a cough and a fever but neither 
@@ -29,22 +30,45 @@ class Node:
         assert self.is_leaf()
         return self.value
     
-    def applique(tree, patient):
-        if tree.is_leaf():
-            return tree.diagnosis()
-        else:
-            if patient[tree.symptom()]:
-                return applique(tree.right,patient)
-            else:
-                return applique(tree.left,patient)    
-
     def reduce(self):
         if self.is_leaf():
             return 
         self.left.reduce()
         self.right.reduce()
         if self.left.is_leaf() and self.right.is_leaf() \
-            and self.value == True :
+            and self.left.value == self.right.value :
             self.value = self.right.value
             self.left = None
             self.right = None
+
+n15,n17,n18,n21,n22,n25 = Node('-'),Node('-'),Node('-'),Node('-'),Node('-'),Node('-')
+
+n16,n19,n20,n23,n24,n26,n27,n28,n29,n30 = Node('+'),Node('+'),Node('+'),\
+Node('+'),Node('+'),Node('+'),Node('+'),Node('+'),Node('+'),Node('+')
+
+n7,n8,n9,n10,n11,n12,n13,n14 = Node('anosmia',n15,n16),Node('anosmia',n17,n18),\
+Node('anosmia',n19,n20),Node('anosmia',n21,n22),Node('anosmia',n23,n24),Node('anosmia',n25,n26),Node('anosmia',n27,n28),Node('anosmia',n29,n30)
+
+n3,n4,n5,n6 = Node('nausea',n7,n8),Node('nausea',n9,n10),Node('nausea',n11,n12),Node('nausea',n13,n14)
+
+n1=Node('fever',n3,n4)
+n2=Node('fever',n5,n6)
+n0=Node('cough',n1,n2)
+
+def applique(tree, patient):
+    if tree.is_leaf():
+        return tree.diagnosis()
+    else:
+        if patient[tree.symptom()]:
+            return applique(tree.right,patient)
+        else:
+            return applique(tree.left,patient)
+
+patient1={'cough':True,'fever':False,'nausea':True,'anosmia':False}
+
+patient2={'cough':False,'fever':True,'nausea':False,'anosmia':True}
+
+print(applique(n0,patient1))
+print(applique(n0,patient2))
+
+n0.reduce()
